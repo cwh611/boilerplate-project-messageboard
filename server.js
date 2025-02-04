@@ -10,6 +10,22 @@ const runner            = require('./test-runner');
 
 const app = express();
 
+app.use((req, res, next) => {
+  res.setHeader("X-DNS-Prefetch-Control", "off");
+  next();
+});
+
+app.use((req, res, next) => {
+  res.setHeader("Content-Security-Policy", "frame-ancestors 'self';");
+  res.setHeader("X-Frame-Options", "SAMEORIGIN"); 
+  next();
+});
+
+app.use((req, res, next) => {
+  res.setHeader("Referrer-Policy", "same-origin");
+  next();
+});
+
 app.use('/public', express.static(process.cwd() + '/public'));
 
 app.use(cors({origin: '*'})); //For FCC testing purposes only
