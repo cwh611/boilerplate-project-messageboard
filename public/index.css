@@ -1,0 +1,57 @@
+html {
+  height: 100vh;
+  width: 100vw;
+  font-family: "Courier New", Courier, monospace;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center
+}
+
+h2 {
+  align-self: flex-start
+}
+
+main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center
+}
+
+#h3-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%
+}
+
+#main-container {
+  width: 80%;
+  display: flex;
+  justify-content: space-between
+}
+
+#boards-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%
+}
+
+#new-board-input-container {
+  display: flex;
+  flex-direction: column
+}
+
+input {
+  margin-bottom: 10px
+}
+
+input, button {
+  font-family: "Courier New", Courier, monospace
+}

@@ -18,6 +18,38 @@ const hashPassword = async (password) => {
 
 module.exports = function (app) {
 
+  app.route("/api/load-boards")
+
+    .get(async(req, res) => {
+
+      try {
+        const board_list_object = await postgres_db.query(
+          "SELECT name FROM boards;"
+        )
+        const boards_array = board_list_object.rows;
+        res.json(boards_array)
+      } catch (err) {
+        res.text("Server error:", err)
+      }
+    })
+
+  app.route("/api/create-board")
+
+    .post(async(req, res) => {
+      const { new_board_name } = req.body
+      try {
+        const new_board_object = await postgres_db.query(
+          "INSERT INTO boards (name) VALUES ($1) RETURNING name, board_id",
+          [new_board_name]
+        )
+        const new_board_row = new_board_object.rows[0];
+        res.json({message: `successfully added ${new_board_row.name} (board id ${new_board_row.board_id})`})
+      } catch (err) {
+        res.text("Server error:", err)
+      }
+      
+    })
+
   app.route('/api/threads/:board')
     
     .post ( async ( req, res ) => {

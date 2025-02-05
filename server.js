@@ -34,7 +34,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //Sample front-end
-app.route('/b/:board/')
+app.route('/b/:board')
   .get(function (req, res) {
     res.sendFile(process.cwd() + '/views/board.html');
   });
