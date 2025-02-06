@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const match = path.match(/\/b\/([^\/]+)/);
     const board = match[1];
     try {
-        const response = await fetch(`/api/threads/${board}`);
+        const response = await fetch(`https://chunk-messageboard-09594f5bef7e.herokuapp.com/api/threads/${board}`);
         const data = await response.json();
         data.forEach(thread => {
             document.getElementById("threads-container").innerHTML += 

@@ -4,11 +4,11 @@ const new_board_input = document.getElementById("board-input");
 
 document.addEventListener("DOMContentLoaded", async () => {
     try {
-        const response = await fetch('/api/load-boards');
+        const response = await fetch('https://chunk-messageboard-09594f5bef7e.herokuapp.com/api/load-boards');
         const data = await response.json();
         data.forEach(board => {
             board_list.innerHTML += 
-                `<li><a href="/b/${board.name}">${board.name}</a></li>`;
+                `<li><a href="https://chunk-messageboard-09594f5bef7e.herokuapp.com/b/${board.name}">${board.name}</a></li>`;
             console.log("board name:", board.name);
         });
     } catch (error) {
@@ -24,7 +24,7 @@ create_board_btn.addEventListener("click", async () => {
         return;
     }
     try {
-        const response = await fetch("/api/create-board", {
+        const response = await fetch("https://chunk-messageboard-09594f5bef7e.herokuapp.com/api/create-board", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ new_board_name })
@@ -34,7 +34,7 @@ create_board_btn.addEventListener("click", async () => {
         console.log(data.message);
 
         if (data.message) {
-            board_list.innerHTML += `<li><a href="/b/${new_board_name}">${new_board_name}</a></li>`;
+            board_list.innerHTML += `<li><a href="https://chunk-messageboard-09594f5bef7e.herokuapp.com/b/${new_board_name}">${new_board_name}</a></li>`;
             new_board_input.value = ""; 
         }
 
