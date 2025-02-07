@@ -55,25 +55,30 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 document.getElementById("post-reply-btn").addEventListener("click", async () => {
     const reply_text = document.getElementById("reply-text-input").value;
-    const response = await fetch(`https://chunk-messageboard-09594f5bef7e.herokuapp.com/api/replies/${board}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            thread_id,
-            text: reply_text,
-        })
-    });
-    const data = response.json();
-    document.getElementById("replies-container").innerHTML +=
-        `<div class="reply-container">
-            <div class="reply-date-container">
-                <strong>Posted on <span class="reply-date-span">${data.reply.created_on}</span></strong>
-            </div>
-            <div class="reply-text">
-                ${data.reply.text}
-            </div>
-            <button class="report-btn" id="report-btn-${data.reply._id}" onclick="report_function(${data.reply._id})">
-                Report
-            </button>
-        </div>`
+    try {
+        const response = await fetch(`https://chunk-messageboard-09594f5bef7e.herokuapp.com/api/replies/${board}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                thread_id,
+                text: reply_text,
+            })
+        });
+        const data = response.json();
+        document.getElementById("replies-container").innerHTML +=
+            `<div class="reply-container">
+                <div class="reply-date-container">
+                    <strong>Posted on <span class="reply-date-span">${data.reply.created_on}</span></strong>
+                </div>
+                <div class="reply-text">
+                    ${data.reply.text}
+                </div>
+                <button class="report-btn" id="report-btn-${data.reply._id}" onclick="report_function(${data.reply._id})">
+                    Report
+                </button>
+            </div>`
+    } catch (err) {
+        console.log("Server error:", err);
+        alert("Server error:", err);
+    };
 });
