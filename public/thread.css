@@ -18,6 +18,27 @@ h2 {
     text-align: center
 }
 
+#header-subcontainer {
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+#report-thread-btn, #delete-thread-btn {
+    margin-left: 10px;
+    font-family: "Courier New", Courier, monospace
+}
+
+#report-thread-btn {
+    margin-left: 30px
+}
+
+#thread-password {
+    font-family: "Courier New", Courier, monospace;
+    margin: 0;
+    margin-left: 10px
+}
+
 main {
     height: 100%;
     width: 80%;
@@ -60,5 +81,9 @@ input, #post-reply-btn {
     margin-left: 20px;
     margin-top: 10px;
     margin-bottom: 20px;
+    font-family: "Courier New", Courier, monospace
+}
+
+.delete-reply-btn {
     font-family: "Courier New", Courier, monospace
 }

@@ -4,22 +4,27 @@
     <title>Anonymous Message Board</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/public/thread.css">
+    <link rel="stylesheet" href="../public/thread.css">
   </head>
   <body>
     <header>
       <h1>
         Anonymous Message Board: <span id="h1-dynamic-child">Test</span>
       </h1>
-      <h2>
-        Thread: <span id="h2-dynamic-child">Test</span>
-      </h2>
+      <div id="header-subcontainer">
+        <h2>
+          Thread: <span id="h2-dynamic-child">Test</span>
+        </h2>
+        <button id="report-thread-btn" type="button">Report</button>
+        <input id="thread-password" type="text" placeholder="password to delete thread" size="25">
+        <button id="delete-thread-btn" type="button">Delete</button>
+      </div>
     </header>
     <main>
       <div id="reply-input-container">
         <textarea id="reply-text-input" required></textarea>
         <div id="reply-input-subcontainer">
-          <input type="text" placeholder="password to delete" required>
+          <input id="reply-password" type="text" placeholder="password to delete reply" size="24">
           <button type="button" id="post-reply-btn">Reply</button>
         </div>
       </div>
@@ -34,6 +39,10 @@
           <button class="report-btn">
             Report
           </button>
+          <input type="text" size="24" placeholder="password to delete reply">
+          <button class="delete-reply-btn">
+            Delete
+          </button>
         </div>
         <div class="reply-container">
           <div class="reply-date-container">
@@ -44,6 +53,10 @@
           </div>
           <button class="report-btn">
             Report
+          </button>
+          <input type="text" size="24" placeholder="password to delete reply">
+          <button class="delete-reply-btn">
+            Delete
           </button>
         </div>
       </div>
