@@ -9,10 +9,46 @@
   <body>
     <header>
       <h1>
-        Anonymous Message Board
+        Anonymous Message Board: <span id="h1-dynamic-child">Test</span>
       </h1>
+      <h2>
+        Thread: <span id="h2-dynamic-child">Test</span>
+      </h2>
     </header>
-    <script src="https://code.jquery.com/jquery-2.2.1.min.js">
+    <main>
+      <div id="reply-input-container">
+        <textarea id="reply-text-input" required></textarea>
+        <div id="reply-input-subcontainer">
+          <input type="text" placeholder="password to delete" required>
+          <button type="button" id="post-reply-btn">Reply</button>
+        </div>
+      </div>
+      <div id="replies-container">
+        <div class="reply-container">
+          <div class="reply-date-container">
+            <strong>Posted on <span class="reply-date-span">test date</span></strong>
+          </div>
+          <div class="reply-text">
+            Test reply 1 Test reply 1Test reply 1Test reply 1Test reply 1Test reply 1Test reply 1Test reply 1Test reply 1Test reply 1Test reply 1Test reply 1Test reply 1Test reply 1Test reply 1
+          </div>
+          <button class="report-btn">
+            Report
+          </button>
+        </div>
+        <div class="reply-container">
+          <div class="reply-date-container">
+            <strong>Posted on <span class="reply-date-span">test date</span></strong>
+          </div>
+          <div class="reply-text">
+            Test reply 1 Test reply 1Test reply 1Test reply 1Test reply 1Test reply 1Test reply 1Test reply 1Test reply 1Test reply 1Test reply 1Test reply 1Test reply 1Test reply 1Test reply 1
+          </div>
+          <button class="report-btn">
+            Report
+          </button>
+        </div>
+      </div>
+    </main>
+    <script src="public/thread.js">
     </script>
   </body>
 </html>

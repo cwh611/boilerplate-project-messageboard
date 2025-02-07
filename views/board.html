@@ -8,13 +8,13 @@
   </head>
   <body>
     <header>
-      <h1 id="h1-element">Anonymous Message Board - Test</h1>
+      <h1 id="h1-element">Anonymous Message Board: <span id="h1-dynamic-child"></span></h1>
     </header>
     <main>
       <h3 id="h3-element">Create a new thread:</h3>
-      <textarea type='text' placeholder='Thread text...' name='text' required=''></textarea>
+      <textarea id="thread-title-input" type='text' placeholder='Thread text...' name='text' required=''></textarea>
       <div id="input-subcontainer">  
-        <input type='text' placeholder='password to delete' name='delete_password' required>
+        <input id="thread-password-input" type='text' placeholder='password to delete' name='delete_password' required>
         <button id="create-thread-btn" type="button">Submit</button>
       </div>
       <h3>Existing threads:</h3>
