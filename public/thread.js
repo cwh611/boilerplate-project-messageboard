@@ -49,7 +49,8 @@ const report_reply_function = async (replyId) => {
                 reply_id: replyId
             })
         });
-        if (response === "reported") {
+        const data = await response.text();
+        if (data === "reported") {
             document.getElementById(`report-btn-${replyId}`).disabled = true;
             document.getElementById(`report-btn-${replyId}`).innerText = "Reported";
         } else {
@@ -74,7 +75,7 @@ const delete_reply_function = async (replyId) => {
                 delete_password: password
             })
         });
-        const data = await response.json();
+        const data = await response.text();
         if (data === "success") {
             load_threads();
             console.log(`Reply ${replyId} successfully deleted from thread ${thread_id} (${board})`)
@@ -138,7 +139,7 @@ document.getElementById("report-thread-btn").addEventListener("click", async () 
             body: JSON.stringify({thread_id})
             }
         );
-        const data = await response.json();
+        const data = await response.text();
         if (data === "reported") {
             document.getElementById("report-thread-btn").disabled = true;
             document.getElementById("report-thread-btn").innerText = "Reported";
@@ -164,7 +165,7 @@ document.getElementById("delete-thread-btn").addEventListener("click", async () 
                 delete_password: password
             })
         });
-        const data = await response.json();
+        const data = await response.text();
         if (data === "success") {
             window.location.href = `https://chunk-messageboard-09594f5bef7e.herokuapp.com/b/${board}`;
             console.log(`Thread ${thread_id} successfully deleted from ${board}`);
