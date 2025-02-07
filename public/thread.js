@@ -27,8 +27,8 @@ const load_threads = async () => {
                 </div>`
         });
     } catch (err) {
-        console.log("Server error:", err);
-        alert("Server error:", err)
+        console.log("Front end not properly handling server response");
+        alert("Front end not properly handling server response")
     }
 };
 
@@ -100,7 +100,7 @@ document.getElementById("post-reply-btn").addEventListener("click", async () => 
                 delete_password: reply_password
             })
         });
-        const data = response.json();
+        const data = await response.json();
         document.getElementById("replies-container").innerHTML +=
             `<div class="reply-container">
                 <div class="reply-date-container">
@@ -118,8 +118,8 @@ document.getElementById("post-reply-btn").addEventListener("click", async () => 
                 </button>
             </div>`
     } catch (err) {
-        console.log("Server error:", err);
-        alert("Server error:", err);
+        console.log(err);
+        alert(err);
     };
 });
 
