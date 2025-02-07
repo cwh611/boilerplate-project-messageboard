@@ -3,13 +3,20 @@ const match = path.match(/\/b\/([^\/]+)\/([^\/]+)/);
 const board = match[1];
 const thread_id = match[2];
 
+const init = () => {
+    if (!board || !thread_id) {
+        alert("Error parsing board name or thread ID");
+        return;
+    }
+}
+
 const load_threads = async () => {
     try {
         const response = await fetch(`https://chunk-messageboard-09594f5bef7e.herokuapp.com/api/replies/${board}?thread_id=${thread_id}`);
         const data = await response.json();
         document.getElementById("h2-dynamic-child").innerText = data.text;
         data.replies.forEach(reply => {
-            document.getElementById("replies-container").innerHTML =
+            document.getElementById("replies-container").innerHTML +=
                 `<div class="reply-container">
                     <div class="reply-date-container">
                         <strong>Posted on <span class="reply-date-span">${reply.created_on}</span></strong>
@@ -84,6 +91,7 @@ const delete_reply_function = async (replyId) => {
 
 document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("h1-dynamic-child").innerText = board;
+    document.getElementById("replies-container").innerHTML = "";
     load_threads();
 });
 
@@ -125,7 +133,7 @@ document.getElementById("post-reply-btn").addEventListener("click", async () => 
 
 document.getElementById("report-thread-btn").addEventListener("click", async () => {
     try {
-        const response = await fetch(`https://chunk-messageboard-09594f5bef7e.herokuapp.com/api/replies/${board}`, {
+        const response = await fetch(`https://chunk-messageboard-09594f5bef7e.herokuapp.com/api/threads/${board}`, {
             method: "PUT",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({thread_id})
@@ -135,6 +143,7 @@ document.getElementById("report-thread-btn").addEventListener("click", async () 
         if (data === "reported") {
             document.getElementById("report-thread-btn").disabled = true;
             document.getElementById("report-thread-btn").innerText = "Reported";
+            return;
         } else {
             alert("Error: server response not 'reported'");
             console.log("Error: server response not 'reported'");
@@ -148,7 +157,7 @@ document.getElementById("report-thread-btn").addEventListener("click", async () 
 document.getElementById("delete-thread-btn").addEventListener("click", async () => {
     const password = document.getElementById("thread-password").value;
     try {
-        const response = await fetch(`https://chunk-messageboard-09594f5bef7e.herokuapp.com/api/replies/${board}`, {
+        const response = await fetch(`https://chunk-messageboard-09594f5bef7e.herokuapp.com/api/threads/${board}`, {
             method: "DELETE",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
