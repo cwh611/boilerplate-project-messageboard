@@ -14,7 +14,7 @@ const report_function = async (replyId) => {
             })
         });
         const data = await response.json();
-        if (JSON.stringify(data) === "reported") {
+        if (data === "reported") {
             document.getElementById(`report-btn-${replyId}`).disabled = true;
             document.getElementById(`report-btn-${replyId}`).innerText = "Reported";
         } else {
@@ -30,7 +30,7 @@ const report_function = async (replyId) => {
 document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("h1-dynamic-child").innerText = board;
     try {
-        const response = await fetch(`https://chunk-messageboard-09594f5bef7e.herokuapp.com/api/replies/${board}`);
+        const response = await fetch(`https://chunk-messageboard-09594f5bef7e.herokuapp.com/api/replies/${board}?thread_id=${thread_id}`);
         const data = await response.json();
         document.getElementById("h2-dynamic-child").innerText = data.text;
         data.replies.forEach(reply => {
