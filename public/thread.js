@@ -49,8 +49,7 @@ const report_reply_function = async (replyId) => {
                 reply_id: replyId
             })
         });
-        const data = await response.json();
-        if (data === "reported") {
+        if (response === "reported") {
             document.getElementById(`report-btn-${replyId}`).disabled = true;
             document.getElementById(`report-btn-${replyId}`).innerText = "Reported";
         } else {
