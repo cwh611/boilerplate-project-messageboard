@@ -8,10 +8,10 @@ const report_function = async (replyId) => {
         const response = await fetch(`https://chunk-messageboard-09594f5bef7e.herokuapp.com/api/replies/${board}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
-            body: {
+            body: JSON.stringify({
                 thread_id,
                 reply_id: replyId
-            }
+            })
         });
         const data = await response.json();
         if (JSON.stringify(data) === "reported") {
@@ -58,10 +58,10 @@ document.getElementById("post-reply-btn").addEventListener("click", async () => 
     const response = await fetch(`https://chunk-messageboard-09594f5bef7e.herokuapp.com/api/replies/${board}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: {
+        body: JSON.stringify({
             thread_id,
             text: reply_text,
-        }
+        })
     });
     const data = response.json();
     document.getElementById("replies-container").innerHTML +=

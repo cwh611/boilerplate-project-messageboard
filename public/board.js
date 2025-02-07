@@ -52,10 +52,10 @@ document.getElementById("create-thread-btn").addEventListener("click", async () 
     const response = await fetch(`https://chunk-messageboard-09594f5bef7e.herokuapp.com/api/threads/${board}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: {
+        body: JSON.stringify({
             text: thread_title,
             delete_password: thread_password
-        }
+        })
     });
     const data = await response.json();
     document.getElementById("threads-container").innerHTML += 
