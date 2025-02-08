@@ -166,5 +166,6 @@ button:focus {
     user-select: none;
     transition: background-color 0.2s ease, transform 0.1s ease;
     border-radius: 5px;
-    border: 2px solid #63F74F
+    border: 2px solid #63F74F;
+    outline: none
 }
