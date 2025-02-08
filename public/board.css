@@ -93,9 +93,9 @@ button:hover {
     border-radius: 5px;
   }
   
-  button:active {
+button:active {
     transform: perspective(500px) rotateY(30deg);
-  }
+}
 
 #threads-container {
     width: 100%;
@@ -110,4 +110,16 @@ button:hover {
 .thread-subcontainer {
     margin-top: 5px;
     margin-left: 10px
+}
+
+a {
+    color: white
+}
+
+a:active {
+    color: #63F74F
+}
+
+.created-on-static, .bumped-on-static {
+    color: white
 }

@@ -35,7 +35,7 @@ window.addEventListener("pageshow", async () => {
                     </span>
                     <div class="thread-subcontainer">
                         <div class="created-on-container">
-                            <span>
+                            <span class="created-on-static">
                                 Created on 
                             </span>
                             <span class="thread-created-on">
@@ -43,7 +43,7 @@ window.addEventListener("pageshow", async () => {
                             </span>
                         </div>
                         <div class="bumped-on-container">
-                            <span>
+                            <span class="bumped-on-static">
                                 Bumped on 
                             </span>
                             <span class="thread-bumped-on">
