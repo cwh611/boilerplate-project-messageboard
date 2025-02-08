@@ -118,6 +118,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 document.getElementById("post-reply-btn").addEventListener("click", async () => {
     const reply_text = document.getElementById("reply-text-input").value;
     const reply_password = document.getElementById("reply-password").value;
+    if (!reply_text || !reply_password) {
+        alert("Reply text and password are required");
+        return;
+    }
     try {
         const response = await fetch(`https://chunk-messageboard-09594f5bef7e.herokuapp.com/api/replies/${board}`, {
             method: "POST",
