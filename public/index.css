@@ -77,6 +77,12 @@ a:active {
   color: #63F74F
 }
 
+li:focus, a:focus {
+  outline: none;
+  box-shadow: none;
+  border: 2px solid #63F74F; 
+}
+
 #new-board-input-container {
   display: flex;
   flex-direction: column
@@ -108,6 +114,12 @@ button {
   border-radius: 5px;
   overflow: none;
   margin-top: 10px
+}
+
+button:focus {
+  outline: none;
+  box-shadow: none;
+  border: 2px solid white; 
 }
 
 button:hover {

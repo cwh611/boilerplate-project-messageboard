@@ -148,8 +148,14 @@ button:hover {
     user-select: none;
     transition: background-color 0.2s ease, transform 0.1s ease;
     border-radius: 5px;
-  }
+}
   
-  button:active {
+button:active {
     transform: perspective(500px) rotateY(30deg);
-  }
+}
+
+button:focus {
+    outline: none;
+    box-shadow: none;
+    border: 2px solid white; 
+}
