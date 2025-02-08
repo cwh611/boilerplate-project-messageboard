@@ -10,6 +10,22 @@ const init = () => {
     }
 }
 
+const iso_to_readable = (date) => {
+    const date_object = new Date(date);
+    const readable_date = date_object.toLocaleString("en-US", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+        hour12: true,
+        timeZoneName: "short"
+    });
+    return readable_date;
+};
+
 const load_threads = async () => {
     try {
         const response = await fetch(`https://chunk-messageboard-09594f5bef7e.herokuapp.com/api/replies/${board}?thread_id=${thread_id}`);
@@ -19,7 +35,7 @@ const load_threads = async () => {
             document.getElementById("replies-container").innerHTML +=
                 `<div class="reply-container">
                     <div class="reply-date-container">
-                        <strong>Posted on <span class="reply-date-span">${reply.created_on}</span></strong>
+                        <strong>Posted on <span class="reply-date-span">${iso_to_readable(reply.created_on)}</span></strong>
                     </div>
                     <div class="reply-text">
                         ${reply.text}
@@ -95,7 +111,7 @@ const delete_reply_function = async (replyId) => {
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
-    document.getElementById("h1-dynamic-child").innerText = board;
+    document.getElementById("h1-dynamic-child").innerText = decodeURIComponent(board);
     load_threads();
 });
 
@@ -116,7 +132,7 @@ document.getElementById("post-reply-btn").addEventListener("click", async () => 
         document.getElementById("replies-container").innerHTML +=
             `<div class="reply-container">
                 <div class="reply-date-container">
-                    <strong>Posted on <span class="reply-date-span">${data.reply.created_on}</span></strong>
+                    <strong>Posted on <span class="reply-date-span">${iso_to_readable(data.reply.created_on)}</span></strong>
                 </div>
                 <div class="reply-text">
                     ${data.reply.text}
