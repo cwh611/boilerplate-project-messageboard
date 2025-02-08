@@ -116,6 +116,7 @@ input::placeholder {
 
 .reply-text {
     margin-left: 20px;
+    color: white
 }
 
 .report-btn {

@@ -102,6 +102,6 @@ document.getElementById("create-thread-btn").addEventListener("click", async () 
                 </div>
             </div>
         </div>`;
-    thread_title = "";
-    thread_password = "";
+        document.getElementById("thread-title-input").value = "";
+        document.getElementById("thread-password-input").value = "";
 });

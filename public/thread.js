@@ -154,8 +154,8 @@ document.getElementById("post-reply-btn").addEventListener("click", async () => 
         console.log(err);
         alert(err);
     };
-    reply_text = "";
-    reply_password = "";
+    document.getElementById("reply-text-input").value = "";
+    document.getElementById("reply-password").value = "";    
 });
 
 document.getElementById("report-thread-btn").addEventListener("click", async () => {
