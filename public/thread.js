@@ -14,7 +14,7 @@ const load_threads = async () => {
     try {
         const response = await fetch(`https://chunk-messageboard-09594f5bef7e.herokuapp.com/api/replies/${board}?thread_id=${thread_id}`);
         const data = await response.json();
-        document.getElementById("h2-dynamic-child").innerText = data.text;
+        document.getElementById("h2-dynamic-child").innerText = decodeURIComponent(data.text);
         data.replies.forEach(reply => {
             document.getElementById("replies-container").innerHTML +=
                 `<div class="reply-container">
@@ -65,6 +65,10 @@ const report_reply_function = async (replyId) => {
 
 const delete_reply_function = async (replyId) => {
     const password = document.getElementById(`delete-reply-${replyId}-password`).value;
+    if (!password) {
+        alert("You need to enter the password");
+        return;
+    }
     try {
         const response = await fetch(`https://chunk-messageboard-09594f5bef7e.herokuapp.com/api/replies/${board}`, {
             method: "DELETE",
@@ -77,6 +81,7 @@ const delete_reply_function = async (replyId) => {
         });
         const data = await response.text();
         if (data === "success") {
+            document.getElementById("replies-container").innerHTML = "";
             load_threads();
             console.log(`Reply ${replyId} successfully deleted from thread ${thread_id} (${board})`)
         } else {
@@ -91,7 +96,6 @@ const delete_reply_function = async (replyId) => {
 
 document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("h1-dynamic-child").innerText = board;
-    document.getElementById("replies-container").innerHTML = "";
     load_threads();
 });
 

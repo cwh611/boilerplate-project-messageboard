@@ -2,6 +2,22 @@ const path = window.location.pathname;
 const match = path.match(/\/b\/([^\/]+)/);
 const board = match[1];
 
+const iso_to_readable = (date) => {
+    const date_object = new Date(date);
+    const readable_date = date_object.toLocaleString("en-US", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+        hour12: true,
+        timeZoneName: "short"
+    });
+    return readable_date;
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("h1-dynamic-child").innerText = board;
     try {
@@ -23,7 +39,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 Created on 
                             </span>
                             <span class="thread-created-on">
-                                ${thread.created_on}
+                                ${iso_to_readable(thread.created_on)}
                             </span>
                         </div>
                         <div class="bumped-on-container">
@@ -31,7 +47,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 Bumped on 
                             </span>
                             <span class="thread-bumped-on">
-                                ${thread.bumped_on}
+                                ${iso_to_readable(thread.bumped_on)}
                             </span>
                         </div>
                     </div>
@@ -73,7 +89,7 @@ document.getElementById("create-thread-btn").addEventListener("click", async () 
                         Created on 
                     </span>
                     <span class="thread-created-on">
-                        ${data.thread.created_on}
+                        ${iso_to_readable(data.thread.created_on)}
                     </span>
                 </div>
                 <div class="bumped-on-container">
@@ -81,7 +97,7 @@ document.getElementById("create-thread-btn").addEventListener("click", async () 
                         Bumped on 
                     </span>
                     <span class="thread-bumped-on">
-                        ${data.thread.bumped_on}
+                        ${iso_to_readable(data.thread.bumped_on)}
                     </span>
                 </div>
             </div>
