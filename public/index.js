@@ -3,6 +3,7 @@ const create_board_btn = document.getElementById("create-board-btn");
 const new_board_input = document.getElementById("board-input");
 
 window.addEventListener("pageshow", async () => {
+    board_list.innerHTML = "";
     try {
         const response = await fetch('https://chunk-messageboard-09594f5bef7e.herokuapp.com/api/load-boards');
         const data = await response.json();
