@@ -110,7 +110,7 @@ const delete_reply_function = async (replyId) => {
     };
 };
 
-document.addEventListener("DOMContentLoaded", async () => {
+window.addEventListener("pageshow", async () => {
     document.getElementById("h1-dynamic-child").innerText = decodeURIComponent(board);
     load_threads();
 });

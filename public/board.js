@@ -18,7 +18,7 @@ const iso_to_readable = (date) => {
     return readable_date;
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
+window.addEventListener("pageshow", async () => {
     document.getElementById("h1-dynamic-child").innerText = board;
     try {
         const response = await fetch(`https://chunk-messageboard-09594f5bef7e.herokuapp.com/api/threads/${board}`);
