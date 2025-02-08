@@ -98,9 +98,13 @@ button:active {
 }
 
 button:focus {
-    outline: none;
-    box-shadow: none;
-    border: 2px solid white; 
+    background-color: #16e60f;
+    color: black;
+    transform: scale(1.1);
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    border-radius: 5px;
 }
 
 #threads-container {

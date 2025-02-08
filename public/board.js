@@ -19,7 +19,8 @@ const iso_to_readable = (date) => {
 }
 
 window.addEventListener("pageshow", async () => {
-    document.getElementById("h1-dynamic-child").innerText = board;
+    document.getElementById("h1-dynamic-child").innerText = decodeURIComponent(board);
+    document.getElementById("threads-container").innerHTML = "";
     try {
         const response = await fetch(`https://chunk-messageboard-09594f5bef7e.herokuapp.com/api/threads/${board}`);
         const data = await response.json();
