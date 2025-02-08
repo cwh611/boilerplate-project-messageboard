@@ -80,7 +80,7 @@ const report_reply_function = async (replyId) => {
 };
 
 const delete_reply_function = async (replyId) => {
-    const password = document.getElementById(`delete-reply-${replyId}-password`).value;
+    let password = document.getElementById(`delete-reply-${replyId}-password`).value;
     if (!password) {
         alert("You need to enter the password");
         return;
@@ -108,6 +108,7 @@ const delete_reply_function = async (replyId) => {
         alert("Server error:", err);
         console.log("Server error:", err);
     };
+    password = "";
 };
 
 window.addEventListener("pageshow", async () => {
@@ -116,8 +117,8 @@ window.addEventListener("pageshow", async () => {
 });
 
 document.getElementById("post-reply-btn").addEventListener("click", async () => {
-    const reply_text = document.getElementById("reply-text-input").value;
-    const reply_password = document.getElementById("reply-password").value;
+    let reply_text = document.getElementById("reply-text-input").value;
+    let reply_password = document.getElementById("reply-password").value;
     if (!reply_text || !reply_password) {
         alert("Reply text and password are required");
         return;
@@ -153,6 +154,8 @@ document.getElementById("post-reply-btn").addEventListener("click", async () => 
         console.log(err);
         alert(err);
     };
+    reply_text = "";
+    reply_password = "";
 });
 
 document.getElementById("report-thread-btn").addEventListener("click", async () => {

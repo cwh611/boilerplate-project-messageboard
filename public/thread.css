@@ -1,7 +1,9 @@
 html {
     height: 100vh;
     width: 100vw;
-    font-family: "Courier New", Courier, monospace
+    font-family: "Courier New", Courier, monospace;
+    background-color: black;
+    color: #63F74F
 }
 
 body {
@@ -12,6 +14,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center
+}
+
+header {
+    margin-top: 75px
 }
 
 h2 {
@@ -58,15 +64,50 @@ main {
 }
 
 textarea {
-    margin-bottom: 5px;
+    margin-bottom: 20px;
     height: 100px;
     font-family: "Courier New", Courier, monospace;
-    font-size: 16px
+    font-size: 16px;
+    background-color: black;
+    color: #63F74F;
+    border: 2px solid white;
+    border-radius: 5px;
+    overflow: none;
+    padding: 10px
+}
+
+textarea:focus {
+    outline: none;
+    box-shadow: none;
+    border: 2px solid #63F74F; 
+}
+
+textarea::placeholder {
+    color: #63F74F
 }
 
 input, #post-reply-btn {
     font-family: "Courier New", Courier, monospace;
     margin-bottom: 20px
+}
+
+input {
+    font-family: "Courier New", Courier, monospace;
+    background-color: black;
+    border: 2px solid white;
+    border-radius: 5px;
+    color: #63F74F;
+    padding: 5px
+}
+
+input:focus {
+    outline: none;
+    box-shadow: none;
+    border: 2px solid #63F74F; 
+}
+
+input::placeholder {
+    color: #63F74F
 }
 
 .reply-date-container {
@@ -87,3 +128,27 @@ input, #post-reply-btn {
 .delete-reply-btn {
     font-family: "Courier New", Courier, monospace
 }
+
+button {
+    font-family: "Courier New", Courier, monospace;
+    background-color: black;
+    border: 2px solid #63F74F;
+    color: #63F74F;
+    border-radius: 5px;
+    overflow: none;
+    padding: 5px
+}
+
+button:hover {
+    background-color: #16e60f;
+    color: black;
+    transform: scale(1.1);
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    border-radius: 5px;
+  }
+  
+  button:active {
+    transform: perspective(500px) rotateY(30deg);
+  }
