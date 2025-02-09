@@ -75,7 +75,7 @@ document.getElementById("create-thread-btn").addEventListener("click", async () 
         })
     });
     const data = await response.json();
-    document.getElementById("threads-container").innerHTML += 
+    document.getElementById("threads-container").innerHTML = 
         `<div class="thread-container">
             <span class="thread-title">
                 <strong>
@@ -102,7 +102,7 @@ document.getElementById("create-thread-btn").addEventListener("click", async () 
                     </span>
                 </div>
             </div>
-        </div>`;
+        </div>` + document.getElementById("threads-container").innerHTML;
         document.getElementById("thread-title-input").value = "";
         document.getElementById("thread-password-input").value = "";
 });

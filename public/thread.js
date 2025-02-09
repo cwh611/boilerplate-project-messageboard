@@ -134,7 +134,7 @@ document.getElementById("post-reply-btn").addEventListener("click", async () => 
             })
         });
         const data = await response.json();
-        document.getElementById("replies-container").innerHTML +=
+        document.getElementById("replies-container").innerHTML =
             `<div class="reply-container">
                 <div class="reply-date-container">
                     <strong>Posted on <span class="reply-date-span">${iso_to_readable(data.reply.created_on)}</span></strong>
@@ -149,7 +149,7 @@ document.getElementById("post-reply-btn").addEventListener("click", async () => 
                 <button class="delete-reply-btn" type="button" onclick="delete_reply_function(${data.reply._id})">
                     Delete
                 </button>
-            </div>`
+            </div>` + document.getElementById("replies-container").innerHTML;
     } catch (err) {
         console.log(err);
         alert(err);
